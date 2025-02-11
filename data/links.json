@@ -1,0 +1,64 @@
+{
+  "links": [
+    {
+      "id": 1,
+      "title": "Portainer",
+      "url": "https://portainer.usov-home.ru",
+      "icon": "https://github.com/NX211/homer-icons/blob/master/png/portainer.png?raw=true"
+    },
+    {
+      "id": 2,
+      "title": "Glances",
+      "url": "https://monitoring.usov-home.ru",
+      "category": "monitoring"
+    },
+    {
+      "id": 3,
+      "title": "Nginx",
+      "url": "https://nginx.usov-home.ru",
+      "icon": "https://nginx.usov-home.ru/images/favicons/favicon-32x32.png",
+      "isSecret": true
+    },
+    {
+      "id": 4,
+      "title": "Pgadmin",
+      "url": "https://pgadmin.usov-home.ru",
+      "isSecret": true
+    },
+    {
+      "id": 5,
+      "title": "Grafana",
+      "url": "https://grafana.usov-home.ru",
+      "icon": "https://grafana.usov-home.ru/public/img/fav32.png",
+      "category": "monitoring"
+    },
+    { "id": 6, "title": "Dashdot", "url": "https://dashdot.usov-home.ru" },
+    { "id": 7, "title": "Snake", "url": "https://snake.usov-home.ru" },
+    { "id": 8, "title": "Md share", "url": "https://md-share.usov-home.ru" },
+    { "id": 9, "title": "Shlink", "url": "https://shlink.usov-home.ru" },
+    {
+      "id": 10,
+      "title": "Shlink app",
+      "url": "https://shlink-app.usov-home.ru"
+    },
+    {
+      "id": 11,
+      "title": "Open WebAi",
+      "url": "https://ai.usov-home.ru",
+      "category": "ai"
+    },
+    {
+      "id": 12,
+      "title": "Home Assistant",
+      "url": "https://ha.usov-home.ru",
+      "category": "smart-home"
+    },
+    {
+      "id": 13,
+      "title": "Z2M",
+      "url": "https://z2m.usov-home.ru",
+      "icon": "https://img.icons8.com/?size=100&id=80168&format=png&color=000000",
+      "category": "smart-home"
+    }
+  ]
+}
