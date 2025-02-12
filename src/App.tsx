@@ -4,6 +4,7 @@ import { LinkCard } from "./components/LinkCard";
 import linksData from "../data/links.json";
 import { IconCacheProvider } from "./contexts/IconCache";
 import { useIsLocalNetwork } from "./hooks/useIsLocalNetwork";
+import { Preloader } from "./components/Preloader";
 
 function App() {
   const [links] = useState<Link[]>(linksData.links);
@@ -93,4 +94,10 @@ function App() {
   );
 }
 
-export default App;
+export default function Root() {
+  return (
+    <Preloader>
+      <App />
+    </Preloader>
+  );
+}
