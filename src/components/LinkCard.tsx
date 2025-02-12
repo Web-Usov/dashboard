@@ -18,12 +18,16 @@ export function LinkCard({ link }: LinkCardProps) {
     `https://${domain}/static/icons/favicon.ico`,
   ];
 
+  const cachedPath = getIconPath(domain);
+
   const iconPaths = link.icon
     ? [link.icon, ...defaultIconPaths]
     : defaultIconPaths;
 
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
-  const [currentIconUrl, setCurrentIconUrl] = useState<string>("");
+  const [currentIconUrl, setCurrentIconUrl] = useState<string>(
+    cachedPath ?? iconPaths[0]
+  );
 
   useEffect(() => {
     const cachedPath = getIconPath(domain);
@@ -35,6 +39,10 @@ export function LinkCard({ link }: LinkCardProps) {
   }, [domain, getIconPath, link.icon]);
 
   const handleIconError = () => {
+    console.debug("Icon error:", {
+      currentIconUrl,
+      iconError,
+    });
     if (currentIconUrl !== iconPaths[iconPaths.length - 1]) {
       const nextIndex = currentIconIndex + 1;
       if (nextIndex < iconPaths.length) {
@@ -49,6 +57,10 @@ export function LinkCard({ link }: LinkCardProps) {
   };
 
   const handleIconLoad = () => {
+    console.debug("Icon loaded:", {
+      currentIconUrl,
+      iconError,
+    });
     if (!getIconPath(domain)) {
       setIconPath(domain, currentIconUrl);
     }
