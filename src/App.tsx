@@ -46,6 +46,7 @@ function App() {
           <h1 className="text-4xl font-bold mb-8 text-center flex items-center justify-center gap-4">
             <img src="/vite.svg" alt="Usov Home" className="w-12 h-12" />
             Usov Home
+            {isLocalNetwork && <span className="badge badge-secondary">Local Network</span>}
           </h1>
 
           {/* Поиск */}

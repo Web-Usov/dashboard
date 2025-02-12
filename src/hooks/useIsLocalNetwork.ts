@@ -12,6 +12,12 @@ export function useIsLocalNetwork() {
 
 // Функция для определения локальной сети
 export async function checkIsLocalNetwork(): Promise<boolean> {
+
+  const isLocalhost = checkIsLocalhost(window.location.hostname);
+  if (isLocalhost) {
+    return true;
+  }
+
   return fetch(window.location.origin, {
     method: 'HEAD',
     cache: 'no-store'
@@ -21,11 +27,14 @@ export async function checkIsLocalNetwork(): Promise<boolean> {
       return isLocal === '1';
     })
     .catch(() => {
-      const hostname = window.location.hostname;
-      return hostname === 'localhost' || 
-             hostname === '127.0.0.1' || 
-             hostname.endsWith('.local') || 
-             hostname.endsWith('.localhost') ||
-             hostname.startsWith('192.168.');
+      return false;
     });
+}
+
+
+function checkIsLocalhost(hostname: string): boolean {
+  return hostname === 'localhost' || 
+         hostname === '127.0.0.1' || 
+         hostname.endsWith('.local') || 
+         hostname.endsWith('.localhost');
 }
