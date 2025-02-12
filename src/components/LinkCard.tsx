@@ -20,9 +20,9 @@ export function LinkCard({ link }: LinkCardProps) {
 
   const cachedPath = getIconPath(domain);
 
-  const iconPaths = link.icon
-    ? [link.icon, ...defaultIconPaths]
-    : defaultIconPaths;
+  const iconPaths: string[] = link.icon
+    ? Array.from(new Set([link.icon, ...defaultIconPaths]))
+    : Array.from(new Set(defaultIconPaths));
 
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
   const [currentIconUrl, setCurrentIconUrl] = useState<string>(
@@ -43,16 +43,14 @@ export function LinkCard({ link }: LinkCardProps) {
       currentIconUrl,
       iconError,
     });
+    setIconError(true);
     if (currentIconUrl !== iconPaths[iconPaths.length - 1]) {
       const nextIndex = currentIconIndex + 1;
       if (nextIndex < iconPaths.length) {
         setCurrentIconIndex(nextIndex);
         setCurrentIconUrl(iconPaths[nextIndex]);
-      } else {
-        setIconError(true);
+        console.debug("Next icon:", iconPaths[nextIndex], iconPaths, nextIndex);
       }
-    } else {
-      setIconError(true);
     }
   };
 
@@ -61,6 +59,8 @@ export function LinkCard({ link }: LinkCardProps) {
       currentIconUrl,
       iconError,
     });
+
+    setIconError(false);
     if (!getIconPath(domain)) {
       setIconPath(domain, currentIconUrl);
     }
@@ -71,16 +71,16 @@ export function LinkCard({ link }: LinkCardProps) {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="card h-full w-full bg-base-100 shadow-xl hover:shadow-2xl transition-shadow"
+      className="card bg-base-200 shadow-xl transition-all hover:scale-105 hover:shadow-2xl"
     >
       <div className="card-body">
-        <div className="flex items-center justify-between gap-2">
-          <h2 className="card-title truncate">
+        <div className="flex items-center gap-2">
+          <div className="flex-shrink-0 h-8 w-8">
             {!iconError ? (
               <img
                 src={currentIconUrl}
-                alt=""
-                className="w-8 h-8 flex-shrink-0"
+                alt={""}
+                className="h-8 w-8"
                 onError={handleIconError}
                 onLoad={handleIconLoad}
               />
@@ -89,15 +89,15 @@ export function LinkCard({ link }: LinkCardProps) {
                 web
               </span>
             )}
-            <span className="truncate">{link.title}</span>
-          </h2>
+          </div>
+          <h2 className="card-title flex-1">{link.title}</h2>
           {link.category && (
             <div className="badge badge-secondary text-xs whitespace-nowrap">
               {link.category}
             </div>
           )}
         </div>
-        <p className="text-sm text-gray-500 truncate">{domain}</p>
+        <p className="text-sm text-base-content/70">{domain}</p>
       </div>
     </a>
   );

@@ -46,12 +46,40 @@ generate_title() {
     echo "$subdomain" | awk '{for(i=1;i<=NF;i++){ $i=toupper(substr($i,1,1)) tolower(substr($i,2))}}1' | sed 's/-/ /g'
 }
 
-# Initialize links array in JSON
-echo "{\"links\":[" > "$OUTPUT_FILE"
+# Initialize output file with opening JSON
+echo "{" > "$OUTPUT_FILE"
+echo "  \"links\": [" >> "$OUTPUT_FILE"
+
+# Initialize id counter
+id=1
 first_entry=true
 
-# Counter for generating IDs
-id=1
+# Process custom links first
+CUSTOM_LINKS_FILE="data/custom-links.json"
+if [ -f "$CUSTOM_LINKS_FILE" ]; then
+    echo "Processing custom links from $CUSTOM_LINKS_FILE"
+    # Extract and append all links except the last one (to handle comma correctly)
+    jq -r '.links[] | tojson' "$CUSTOM_LINKS_FILE" | while read -r link; do
+        if [ "$first_entry" = true ]; then
+            first_entry=false
+        else
+            echo -n "," >> "$OUTPUT_FILE"
+        fi
+        echo -n $'\n  ' >> "$OUTPUT_FILE"
+        echo -n "$link" >> "$OUTPUT_FILE"
+    done
+    
+    # Get the last used id from custom links
+    last_id=$(jq '.links | map(.id) | max' "$CUSTOM_LINKS_FILE")
+    echo "Last ID from custom links: $last_id"
+    id=$((last_id + 1))
+    echo "Next ID for NPM links will be: $id"
+    
+    # Add comma after custom links if any were added
+    if [ "$(jq '.links | length' "$CUSTOM_LINKS_FILE")" -gt 0 ]; then
+        echo -n "," >> "$OUTPUT_FILE"
+    fi
+fi
 
 # Process each nginx config file
 for conf_file in "$TEMP_DIR"/*.conf; do
@@ -114,18 +142,16 @@ for conf_file in "$TEMP_DIR"/*.conf; do
     # Construct the URL
     url="https://$server_name"
     
-    # Add comma if not first entry
+    # Write entry to JSON file
     if [ "$first_entry" = true ]; then
         first_entry=false
     else
-        echo "," >> "$OUTPUT_FILE"
+        echo -n "," >> "$OUTPUT_FILE"
     fi
-    
-    # Write entry to JSON file
-    echo -n "  {" >> "$OUTPUT_FILE"
-    echo -n "\"id\":$id," >> "$OUTPUT_FILE"
-    echo -n "\"title\":\"$title\"," >> "$OUTPUT_FILE"
-    echo -n "\"url\":\"$url\"" >> "$OUTPUT_FILE"
+    echo -n $'\n  ' >> "$OUTPUT_FILE"
+    echo -n "{\"id\":$id" >> "$OUTPUT_FILE"
+    echo -n ",\"title\":\"$title\"" >> "$OUTPUT_FILE"
+    echo -n ",\"url\":\"$url\"" >> "$OUTPUT_FILE"
     [ -n "$icon" ] && echo -n ",\"icon\":\"$icon\"" >> "$OUTPUT_FILE"
     [ "$is_secret" = "true" ] && echo -n ",\"isSecret\":true" >> "$OUTPUT_FILE"
     [ -n "$category" ] && echo -n ",\"category\":\"$category\"" >> "$OUTPUT_FILE"
