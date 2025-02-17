@@ -12,18 +12,35 @@ fi
 
 # Copy nginx config files
 echo "Copying nginx configuration files..."
-if [[ "$SSH_SOURCE" == "./"* ]]; then
-    # Local files
-    cp "$SSH_SOURCE"/*.conf "$TEMP_DIR/" || {
-        echo "Error: Failed to copy local configuration files"
-        exit 1
-    }
-else
-    # Remote files via SSH
-    scp -r "$SSH_SOURCE/*.conf" "$TEMP_DIR/" || {
-        echo "Error: Failed to copy nginx configuration files from remote server"
-        exit 1
-    }
+
+# Split SSH_SOURCE into array using comma as delimiter
+IFS=',' read -ra SOURCES <<< "$SSH_SOURCE"
+
+for source in "${SOURCES[@]}"; do
+    # Trim whitespace
+    source=$(echo "$source" | xargs)
+    
+    if [[ "$source" == "./"* ]]; then
+        # Local files
+        echo "Copying from local source: $source"
+        cp "$source"/*.conf "$TEMP_DIR/" || {
+            echo "Warning: Failed to copy local configuration files from $source"
+            continue
+        }
+    else
+        # Remote files via SSH
+        echo "Copying from remote source: $source"
+        scp -r "$source/*.conf" "$TEMP_DIR/" || {
+            echo "Warning: Failed to copy nginx configuration files from remote server $source"
+            continue
+        }
+    fi
+done
+
+# Check if any files were copied
+if [ ! "$(ls -A "$TEMP_DIR")" ]; then
+    echo "Error: No configuration files were copied from any source"
+    exit 1
 fi
 
 # Path to the output JSON file

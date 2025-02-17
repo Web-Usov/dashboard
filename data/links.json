@@ -1,18 +1,19 @@
 {
   "links": [
 
-  {"id":100,"title":"Расписание","url":"https://calendar.google.com/calendar/u/0/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=Europe/Samara&showTitle=0&showPrint=0&src=d2ViLnVzb3ZAZ21haWwuY29t&src=YS51c292QHBwbC5kbw&src=Z29sb3Zhbm92YW1hcmlhMDZAZ21haWwuY29t&color=%234285F4&color=%23039BE5&color=%23D81B60","category":"personal","icon":"https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_31_256.ico"},
-  {"id":101,"title":"Portainer","url":"https://portainer.usov-home.ru","icon":"https://github.com/NX211/homer-icons/blob/master/png/portainer.png?raw=true"},
-  {"id":102,"title":"Glances","url":"https://monitoring.usov-home.ru","category":"monitoring"},
-  {"id":103,"title":"Nginx","url":"https://nginx.usov-home.ru","icon":"https://nginx.usov-home.ru/images/favicons/favicon-32x32.png","isSecret":true},
-  {"id":104,"title":"Pgadmin","url":"https://pgadmin.usov-home.ru","isSecret":true},
-  {"id":105,"title":"Grafana","url":"https://grafana.usov-home.ru","icon":"https://grafana.usov-home.ru/public/img/fav32.png","category":"monitoring"},
-  {"id":106,"title":"Dashdot","url":"https://dashdot.usov-home.ru"},
-  {"id":107,"title":"Snake","url":"https://snake.usov-home.ru"},
-  {"id":108,"title":"Md share","url":"https://md-share.usov-home.ru"},
-  {"id":109,"title":"Shlink","url":"https://shlink.usov-home.ru"},
-  {"id":110,"title":"Shlink app","url":"https://shlink-app.usov-home.ru"},
-  {"id":111,"title":"Open WebAi","url":"https://ai.usov-home.ru","category":"ai"},
-  {"id":112,"title":"Home Assistant","url":"https://ha.usov-home.ru","category":"smart-home"},
-  {"id":113,"title":"Z2M","url":"https://z2m.usov-home.ru","icon":"https://img.icons8.com/?size=100&id=80168&format=png&color=000000","category":"smart-home"}
+  {"id":1,"title":"Расписание","url":"https://schedual.usov-home.ru","icon":"https://calendar.google.com/googlecalendar/images/favicons_2020q4/calendar_31_256.ico","category":"personal"},
+  {"id":2,"title":"Portainer","url":"https://portainer.usov-home.ru","icon":"https://github.com/NX211/homer-icons/blob/master/png/portainer.png?raw=true","isSecret":true},
+  {"id":3,"title":"Glances","url":"https://monitoring.usov-home.ru","category":"monitoring"},
+  {"id":4,"title":"Nginx","url":"https://nginx.usov-home.ru","icon":"https://nginx.usov-home.ru/images/favicons/favicon-32x32.png","isSecret":true},
+  {"id":5,"title":"Pgadmin","url":"https://pgadmin.usov-home.ru","isSecret":true,"category":"database"},
+  {"id":6,"title":"Grafana","url":"https://grafana.usov-home.ru","icon":"https://grafana.usov-home.ru/public/img/fav32.png","category":"monitoring"},
+  {"id":7,"title":"Dashdot","url":"https://dashdot.usov-home.ru"},
+  {"id":8,"title":"Snake","url":"https://snake.usov-home.ru","category":"game"},
+  {"id":9,"title":"Md share","url":"https://md-share.usov-home.ru"},
+  {"id":10,"title":"Shlink app","url":"https://shlink-app.usov-home.ru","isSecret":true},
+  {"id":11,"title":"Redis","url":"https://redis.usov-home.ru","icon":"https://redis.usov-home.ru/favicon-32x32.png","isSecret":true,"category":"database"},
+  {"id":12,"title":"Auth","url":"https://auth.usov-home.ru","icon":"https://auth.usov-home.ru/static/dist/assets/icons/icon.png"},
+  {"id":13,"title":"Open WebAi","url":"https://ai.usov-home.ru","category":"ai"},
+  {"id":14,"title":"Home Assistant","url":"https://ha.usov-home.ru","category":"smart-home"},
+  {"id":15,"title":"Z2M","url":"https://z2m.usov-home.ru","icon":"https://img.icons8.com/?size=100&id=80168&format=png&color=000000","isSecret":true,"category":"smart-home"}
 ]}
