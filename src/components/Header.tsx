@@ -14,13 +14,13 @@ export const Header: React.FC<HeaderProps> = ({ isLocalNetwork }) => {
         {/* Левая часть */}
         <div className="flex items-center gap-4">
           <div
-            className="tooltip tooltip-bottom"
+            className="w-12 h-12 tooltip tooltip-bottom flex-shrink-0"
             data-tip={isLocalNetwork ? "Локальная сеть" : "Внешняя сеть"}
           >
             <img
               src="/favicon.svg"
               alt="Usov Home"
-              className={`w-12 h-12 rounded-lg border-2 ${
+              className={` rounded-lg border-2 ${
                 isLocalNetwork ? " border-secondary/30" : "border-primary/30"
               }`}
             />

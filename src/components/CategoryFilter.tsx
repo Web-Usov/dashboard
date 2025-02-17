@@ -25,7 +25,9 @@ export function CategoryFilter({
           className={`btn min-w-[100px] ${
             selectedCategory === category ? "btn-primary" : "btn-ghost"
           }`}
-          onClick={() => onCategorySelect(category)}
+          onClick={() =>
+            onCategorySelect(category === selectedCategory ? null : category)
+          }
         >
           {category}
         </button>
