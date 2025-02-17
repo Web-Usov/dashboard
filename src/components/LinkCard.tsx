@@ -14,6 +14,7 @@ export function LinkCard({ link }: LinkCardProps) {
   const defaultIconPaths = [
     `https://${domain}/favicon.ico`,
     `https://${domain}/favicon.png`,
+    `https://${domain}/favicon.svg`,
     `https://${domain}/static/favicon.ico`,
     `https://${domain}/static/icons/favicon.ico`,
   ];
@@ -72,15 +73,15 @@ export function LinkCard({ link }: LinkCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className={`card bg-base-200 shadow-xl transition-all hover:scale-105 hover:shadow-2xl relative border ${
-        link.isSecret ? 'border-error/30' : 'border-primary/30'
+        link.isSecret ? "border-error/30" : "border-primary/30"
       }`}
     >
       {link.isSecret && (
-        <div 
+        <div
           className={`absolute top-2 right-2 w-2 h-2 rounded-full ${
-            link.isSecret ? 'bg-error/50' : 'bg-primary/50'
+            link.isSecret ? "bg-error/50" : "bg-primary/50"
           }`}
-          title={link.isSecret ? 'Приватный ресурс' : 'Публичный ресурс'}
+          title={link.isSecret ? "Приватный ресурс" : "Публичный ресурс"}
         />
       )}
       <div className="card-body">
