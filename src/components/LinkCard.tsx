@@ -1,6 +1,6 @@
 import { Link } from "../types";
 import { useState, useEffect } from "react";
-import { useIconCache } from "../contexts/IconCache";
+import { useCachedState } from "../utils";
 
 interface LinkCardProps {
   link: Link;
@@ -9,7 +9,12 @@ interface LinkCardProps {
 export function LinkCard({ link }: LinkCardProps) {
   const [iconError, setIconError] = useState(false);
   const domain = new URL(link.url).hostname;
-  const { getIconPath, setIconPath } = useIconCache();
+  // const { getIconPath, setIconPath } = useIconCache();
+
+  const [iconPath, setIconPath] = useCachedState<string | undefined>(
+    `icon-${domain}`,
+    undefined
+  );
 
   const defaultIconPaths = [
     `https://${domain}/favicon.ico`,
@@ -19,51 +24,41 @@ export function LinkCard({ link }: LinkCardProps) {
     `https://${domain}/static/icons/favicon.ico`,
   ];
 
-  const cachedPath = getIconPath(domain);
-
   const iconPaths: string[] = link.icon
     ? Array.from(new Set([link.icon, ...defaultIconPaths]))
     : Array.from(new Set(defaultIconPaths));
 
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
   const [currentIconUrl, setCurrentIconUrl] = useState<string>(
-    cachedPath ?? iconPaths[0]
+    iconPath ?? iconPaths[0]
   );
 
   useEffect(() => {
-    const cachedPath = getIconPath(domain);
-    if (cachedPath) {
-      setCurrentIconUrl(cachedPath);
+    if (iconPath) {
+      setCurrentIconUrl(iconPath);
     } else {
       setCurrentIconUrl(iconPaths[0]);
     }
-  }, [domain, getIconPath, link.icon]);
+  }, [domain, iconPath, link.icon]);
 
   const handleIconError = () => {
-    console.debug("Icon error:", {
-      currentIconUrl,
-      iconError,
-    });
-    setIconError(true);
     if (currentIconUrl !== iconPaths[iconPaths.length - 1]) {
       const nextIndex = currentIconIndex + 1;
       if (nextIndex < iconPaths.length) {
         setCurrentIconIndex(nextIndex);
         setCurrentIconUrl(iconPaths[nextIndex]);
-        console.debug("Next icon:", iconPaths[nextIndex], iconPaths, nextIndex);
+      } else {
+        setIconError(true);
       }
+    } else {
+      setIconError(true);
     }
   };
 
   const handleIconLoad = () => {
-    console.debug("Icon loaded:", {
-      currentIconUrl,
-      iconError,
-    });
-
     setIconError(false);
-    if (!getIconPath(domain)) {
-      setIconPath(domain, currentIconUrl);
+    if (iconPath !== currentIconUrl) {
+      setIconPath(currentIconUrl);
     }
   };
 
@@ -90,7 +85,6 @@ export function LinkCard({ link }: LinkCardProps) {
             {!iconError ? (
               <img
                 src={currentIconUrl}
-                alt={""}
                 className="h-8 w-8"
                 onError={handleIconError}
                 onLoad={handleIconLoad}

@@ -5,7 +5,6 @@ import { SearchBar } from "./components/SearchBar";
 import { CategoryFilter } from "./components/CategoryFilter";
 import { Header } from "./components/Header";
 import linksData from "../data/links.json";
-import { IconCacheProvider } from "./contexts/IconCache";
 import { useIsLocalNetwork } from "./hooks/useIsLocalNetwork";
 import { Preloader } from "./components/Preloader";
 
@@ -45,29 +44,24 @@ function App() {
     .sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <IconCacheProvider>
-      <div className="min-h-screen bg-base-200">
-        <Header isLocalNetwork={isLocalNetwork} />
-        <div className="flex flex-col mx-auto p-8">
-          <SearchBar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-          />
+    <div className="min-h-screen bg-base-200">
+      <Header isLocalNetwork={isLocalNetwork} />
+      <div className="flex flex-col mx-auto p-8">
+        <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
-          <CategoryFilter
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategorySelect={setSelectedCategory}
-          />
-          {/* Сетка ссылок */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr">
-            {filteredLinks.map((link) => (
-              <LinkCard key={link.id} link={link} />
-            ))}
-          </div>
+        <CategoryFilter
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategorySelect={setSelectedCategory}
+        />
+        {/* Сетка ссылок */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 auto-rows-fr">
+          {filteredLinks.map((link) => (
+            <LinkCard key={link.id} link={link} />
+          ))}
         </div>
       </div>
-    </IconCacheProvider>
+    </div>
   );
 }
 
