@@ -66,6 +66,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node tools/retail-monitor/index.mjs
+      - name: Verify fresh JSON was actually saved
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node tools/retail-monitor/status.mjs
 
   deploy:
     name: Publish latest gh-pages
