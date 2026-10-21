@@ -1,13 +1,7 @@
 # Temporary independent diagnostic: confirms GitHub emits actual schedule events.
-name: Cron Probe (5m)
+name: Cron Probe (manual only)
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/cron-probe.yml'
 permissions:
   contents: read
 jobs:
