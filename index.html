@@ -86,11 +86,27 @@ function lineChart(){
  const ticks=[0,.5,1].map((f,i)=>'<text x="'+tx(start+(end-start)*f)+'" y="'+(H-6)+'" text-anchor="'+(i===0?'start':i===2?'end':'middle')+'" fill="#8496ad" font-size="11">'+esc(date(new Date(start+(end-start)*f).toISOString()))+'</text>').join('');
  $('#chart').innerHTML='<svg role="img" aria-label="История цен MacBook Pro M5, M5 Pro и б/у Avito" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">'+grid+paths+ticks+'</svg>';
 }
+function renderFreshness(){
+ const at=data.retailAutomated?.lastAttemptAt||data.lastCheckAt;
+ const stamp=at?Date.parse(at):NaN;
+ const age=Number.isFinite(stamp)?Math.max(0,Math.floor((Date.now()-stamp)/60000)):null;
+ const stale=age===null||age>75;
+ const valid=(data.checks||[]).filter(x=>Number.isFinite(x.minProM5)||Number.isFinite(x.minProM5Pro));
+ const unchangedPro=valid.length>1&&valid.every(x=>Number.isFinite(x.minProM5Pro)&&x.minProM5Pro===valid[0].minProM5Pro);
+ $('#updated').textContent=(at?'Последняя проверка '+date(at)+' · '+age+' мин назад':'Проверок ещё не было')+(stale?' · ДАННЫЕ УСТАРЕЛИ':'');
+ $('#updated').style.color=stale?'#ffb86c':'#a0b0c3';
+ const caption=$('#priceChartCaption');
+ if(caption){
+  caption.textContent+=' · '+valid.length+' замеров';
+  if(stale)caption.textContent+=' · ⚠️ Следующая проверка задерживается';
+  else if(unchangedPro)caption.textContent+=' · Цена M5 Pro не менялась';
+ }
+}
 function rest(){const ev=(data.events||[]).slice().sort((a,b)=>String(b.at).localeCompare(String(a.at))).slice(0,10);$('#events').innerHTML=ev.length?ev.map(e=>'<div class="event"><div class="eventbadge">'+(e.kind==='price-drop'?'↓':e.kind==='price-rise'?'↑':e.kind==='new'?'＋':'•')+'</div><div><div class="main">'+esc(e.text)+'</div><div class="when">'+esc(date(e.at))+'</div></div></div>').join(''):'<div class="caption">Первые изменения появятся после проверки источников.</div>';
 const ss=data.sources||{};const rows=Object.entries(ss);$('#health').innerHTML=rows.length?rows.map(([key,v])=>'<div class="healthrow"><strong>'+esc(key)+'</strong><span>'+esc(v.message||v.status||'нет данных')+'</span></div>').join(''):'<div class="caption">Нет данных об источниках.</div>';}
-async function load(){try{const r=await fetch('./data.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(!Array.isArray(d.listings))throw Error('Некорректные данные');data=d;totals();renderListings();lineChart();rest()}catch(e){if(!data){$('#stats').innerHTML='<div class="empty">Не удалось загрузить данные. Обновите страницу.</div>';$('#listings').innerHTML='<div class="empty">'+esc(e.message)+'</div>'}$('#updated').textContent='Данные временно недоступны';}}
+async function load(){try{const r=await fetch('./data.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const d=await r.json();if(!Array.isArray(d.listings))throw Error('Некорректные данные');data=d;totals();renderListings();lineChart();rest();renderFreshness()}catch(e){if(!data){$('#stats').innerHTML='<div class="empty">Не удалось загрузить данные. Обновите страницу.</div>';$('#listings').innerHTML='<div class="empty">'+esc(e.message)+'</div>'}$('#updated').textContent='Данные временно недоступны';}}
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));if(data)renderListings()}));
-$('#search').addEventListener('input',()=>{if(data)renderListings()});$('#sort').addEventListener('change',()=>{if(data)renderListings()});load();setInterval(()=>{if(!document.hidden)load()},300000);
+$('#search').addEventListener('input',()=>{if(data)renderListings()});$('#sort').addEventListener('change',()=>{if(data)renderListings()});load();setInterval(()=>{if(!document.hidden)load()},60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 })();
 </script>
 </body>
