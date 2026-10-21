@@ -2,37 +2,39 @@ name: MacBook Pro - Avito + Pages
 on:
   workflow_dispatch:
   schedule:
-    # Run 20 minutes after the hourly ChatGPT retail collector.
     - cron: '20 * * * *'
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/avito-monitor.yml'
+      - 'tools/avito-monitor/**'
+
 concurrency:
   group: macbook-pages
   cancel-in-progress: false
+
 jobs:
-  collect-and-deploy:
+  collect:
+    name: Collect Avito listings
     if: github.repository == 'Web-Usov/dashboard'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
+    permissions:
+      contents: write
     env:
       APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout integration
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Node.js 22
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run parsing tests
+      - name: Run parser and merge tests
         run: node --test tools/avito-monitor/*.test.mjs
-      - name: Search Avito and merge into gh-pages/data.json
+      - name: Search Avito and update the JSON
         if: env.APIFY_TOKEN != ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,19 +42,35 @@ jobs:
         run: node tools/avito-monitor/index.mjs
       - name: Explain missing API key
         if: env.APIFY_TOKEN == ''
-        run: echo 'Save APIFY_TOKEN in repository Settings > Secrets and variables > Actions to enable collection.'
-      - name: Checkout latest gh-pages contents
+        run: echo 'APIFY_TOKEN not set; skip Avito without blocking the Pages deployment.'
+
+  deploy:
+    name: Publish latest gh-pages
+    needs: collect
+    # Publishing must not depend on Avito (which can hit API limits or timeout).
+    if: ${{ !cancelled() && github.repository == 'Web-Usov/dashboard' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout latest published data
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-          path: pages
           persist-credentials: false
-      - name: Configure Pages
+          path: pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload site
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: pages
-      - name: Publish Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
