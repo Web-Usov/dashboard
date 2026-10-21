@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {PRODUCTS,parseProduct,mergeRetail} from './lib.mjs';
-const hi=PRODUCTS[0],rezon=PRODUCTS[2];
+const hi=PRODUCTS.find(p=>p.id==='S005'),rezon=PRODUCTS.find(p=>p.id==='S006');
 const wrap=(h1,content,store='Самара')=>'<html lang="ru"><head><title>Sample</title></head><body>Ваш город '+store+'<h1>'+h1+'</h1>'+content+' '+('<p>характеристики ноутбука</p>'.repeat(60))+'</body></html>';
 test('Hi Store: selects the discounted price rather than old price or cashback',()=>{
  const html=wrap('Apple MacBook Pro 14.2" (M5 Pro, 2026) 24/1Tb SSD (MGDN4) Silver','В наличии Старая цена 282 090₽ Скидка 65 100₽ Цена со скидкой 216 990₽ Варианты цен');
