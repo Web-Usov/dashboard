@@ -1,0 +1,11 @@
+[Unit]
+Description=Dispatch MacBook Pro Github Actions price check
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+EnvironmentFile=/etc/macbook-watch/dispatch.env
+ExecStart=/usr/local/libexec/macbook-watch-dispatch
+TimeoutStartSec=60
