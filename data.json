@@ -6,9 +6,9 @@
   "startAt": "2026-10-21T14:00:00Z",
   "endAt": "2026-11-01T19:00:00Z",
   "baselineAt": "2026-10-21T10:48:03Z",
-  "lastCheckAt": "2026-10-21T13:52:57.400Z",
-  "checkCount": 1,
-  "lastSuccessAt": null,
+  "lastCheckAt": "2026-10-21T14:47:37.904Z",
+  "checkCount": 2,
+  "lastSuccessAt": "2026-10-21T14:47:37.904Z",
   "listings": [
     {
       "id": "S004",
@@ -38,19 +38,20 @@
       "chip": "M5 Pro",
       "ramGb": 24,
       "ssdGb": 1024,
-      "priceRub": 225590,
+      "priceRub": 226490,
       "cardPriceRub": null,
       "condition": "Новый",
       "paymentLabel": "Цена сайта; условия уточнить",
       "store": "Hi Store",
       "location": "Ново-Садовая, 106, Самара",
-      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/24gb/",
-      "status": "preliminary",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-silver/",
+      "status": "active",
       "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": null,
-      "notes": "Поисковая выдача каталога Hi Store 2 дня назад показывала 225 590 ₽ и «в наличии»; другие страницы показывают иные цены. Уточнить стоимость и наличие.",
+      "verifiedAt": "2026-10-21T14:47:37.904Z",
+      "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "listed-in-stock",
-      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
+      "lastSeenAt": "2026-10-21T14:47:37.904Z"
     },
     {
       "id": "S006",
@@ -59,19 +60,20 @@
       "chip": "M5 Pro",
       "ramGb": 24,
       "ssdGb": 1024,
-      "priceRub": 231490,
+      "priceRub": 226990,
       "cardPriceRub": null,
       "condition": "Новый",
       "paymentLabel": "Цена сайта; условия уточнить",
       "store": "ре:зон",
       "location": "Гудок / Космопорт, Самара",
       "url": "https://rezon.store/catalog/mac/macbook-pro-14-m5-pro/apple-macbook-pro-14-inch-m5-pro-24-1tb-silver/",
-      "status": "preliminary",
+      "status": "active",
       "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": null,
-      "notes": "Опубликованная цена 231 490 ₽; магазины в ТЦ Гудок / Космопорт. Менеджер подтверждает наличие после заказа; сайт не гарантирует складские остатки.",
+      "verifiedAt": "2026-10-21T14:47:37.904Z",
+      "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "pickup-confirm",
-      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
+      "lastSeenAt": "2026-10-21T14:47:37.904Z"
     },
     {
       "id": "S007",
@@ -102,20 +104,21 @@
       "chip": "M5 Pro",
       "ramGb": 24,
       "ssdGb": 1024,
-      "priceRub": 230890,
+      "priceRub": 223490,
       "cardPriceRub": null,
       "condition": "Новый",
       "paymentLabel": "Опубликованная цена; способ оплаты уточнить",
       "store": "Hi Store",
       "location": "Ново-Садовая, 106, Самара",
-      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/apple-m5-pro/",
-      "status": "preliminary",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-space-black/",
+      "status": "active",
       "firstSeenAt": "2026-10-21T13:52:57.400Z",
-      "verifiedAt": null,
-      "notes": "По индексированной выдаче каталога (около 4 дней назад) — в наличии, 230 890 ₽; другие страницы дают другую цену. Уточнить стоимость и наличие по конкретному SKU.",
+      "verifiedAt": "2026-10-21T14:47:37.904Z",
+      "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "listed-in-stock",
       "sourceAccess": "indexed",
-      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
+      "lastSeenAt": "2026-10-21T14:47:37.904Z"
     },
     {
       "id": "S009",
@@ -170,6 +173,14 @@
       "count": 7,
       "status": "partial",
       "note": "Просмотрены индексированные страницы магазинов. Цены не подтверждены прямым онлайн-запросом на момент проверки; Avito недоступен. Рекордные цены в график не внесены."
+    },
+    {
+      "at": "2026-10-21T14:47:37.904Z",
+      "minProM5": null,
+      "minProM5Pro": 223490,
+      "count": 3,
+      "status": "ok",
+      "note": "Автоматический HTTP-обход карточек продавцов; 3 цен подтверждено, 0 ошибок."
     }
   ],
   "events": [
@@ -225,14 +236,14 @@
       "checkedAt": "2026-10-21T13:52:57.400Z"
     },
     "Hi Store": {
-      "status": "indexed",
-      "message": "Несколько подходящих Pro, но цены расходятся между каталогами/снимками. Наличие на складе отличается от немедленного самовывоза.",
-      "checkedAt": "2026-10-21T13:52:57.400Z"
+      "status": "ok",
+      "checkedAt": "2026-10-21T14:47:37.904Z",
+      "message": "Последняя проверка карточки: 18:47; цена опубликована на сайте"
     },
     "ре:зон": {
-      "status": "indexed",
-      "message": "Карточка Pro M5 Pro 24/1 ТБ показывает 231 490 ₽; магазин подтверждает фактическое наличие после заказа.",
-      "checkedAt": "2026-10-21T13:52:57.400Z"
+      "status": "ok",
+      "checkedAt": "2026-10-21T14:47:37.904Z",
+      "message": "Последняя проверка карточки: 18:47; цена опубликована на сайте"
     },
     "iЧехол": {
       "status": "indexed",
@@ -258,5 +269,11 @@
       "M5 Max"
     ]
   },
-  "sourcePolicy": "Проверять только MacBook Pro. MacBook Air не добавлять ни при каких условиях."
+  "sourcePolicy": "Проверять только MacBook Pro. MacBook Air не добавлять ни при каких условиях.",
+  "retailAutomated": {
+    "lastAttemptAt": "2026-10-21T14:47:37.904Z",
+    "lastSuccessAt": "2026-10-21T14:47:37.904Z",
+    "ok": 3,
+    "failed": 0
+  }
 }
