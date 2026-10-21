@@ -1,6 +1,7 @@
 // Retail MacBook Pro 24+ GB / 1+ TB price extraction.
 // Deliberately conservative: never treat a listing-page price as a product price.
 export const PRODUCTS=[
+ {id:'S007',store:'Hi Store',url:'https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2025/apple-macbook-pro-14-m5-2025-24gb-1tb-ssd-silver-mde64/',chip:'M5',code:'MDE64'},
  {id:'S005',store:'Hi Store',url:'https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-silver/',chip:'M5 Pro',code:'MGDN4'},
  {id:'S008',store:'Hi Store',url:'https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-space-black/',chip:'M5 Pro',code:'MGDR4'},
  {id:'S006',store:'ре:зон',url:'https://rezon.store/catalog/mac/macbook-pro-14-m5-pro/apple-macbook-pro-14-inch-m5-pro-24-1tb-silver/',chip:'M5 Pro',code:null}
@@ -15,7 +16,8 @@ export function parseProduct(html,product){
  const h1=/<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html);
  if(!h1)throw Error('No product H1');
  const title=textify(h1[1]);
- if(!/macbook\s*pro/i.test(title)||/\bair\b/i.test(title)||!/M5\s*Pro|M5\s+Pro/i.test(title)||!/(?:24\s*[/\\]\s*1\s*(?:TB|ТБ)|24\s*(?:GB|ГБ).{0,25}1\s*(?:TB|ТБ))/i.test(title))throw Error('Wrong product configuration in H1: '+title.slice(0,120));
+ const chipOk=product.chip==='M5 Pro'?/\bM5\s*Pro\b/i.test(title):/\bM5\b/i.test(title)&&!/\bM5\s*(?:Pro|Max)\b/i.test(title);
+ if(!/macbook\s*pro/i.test(title)||/\bair\b/i.test(title)||!chipOk||!/(?:24\s*[/\\]\s*1\s*(?:TB|ТБ)|24\s*(?:GB|ГБ).{0,25}1\s*(?:TB|ТБ))/i.test(title))throw Error('Wrong product configuration in H1: '+title.slice(0,120));
  if(product.code&&!title.toUpperCase().includes(product.code))throw Error('Product SKU mismatch');
  if(product.url.includes('hi-stores.ru')&&!/(?:Ваш город|Цены и наличие указаны для).{0,150}Самар|в Самаре/i.test(textify(html).slice(0,4000)))throw Error('Samara storefront not confirmed');
  const remainder=textify(html.slice(h1.index+h1[0].length,h1.index+h1[0].length+85000));
