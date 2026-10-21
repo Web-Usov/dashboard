@@ -20,7 +20,10 @@ sudo install -d -m 755 /usr/local/libexec
 sudo install -m 700 dispatch.sh /usr/local/libexec/macbook-watch-dispatch
 sudo install -m 644 macbook-watch-dispatch.service /etc/systemd/system/
 sudo install -m 644 macbook-watch-dispatch.timer /etc/systemd/system/
-sudo sh -c 'umask 077; printf "GITHUB_DISPATCH_TOKEN=%s\n" "$1" > /etc/macbook-watch/dispatch.env' sh '<TOKEN_HERE>'
+read -rs -p 'GitHub fine-grained PAT: ' GH_PAT; echo
+printf 'GITHUB_DISPATCH_TOKEN=%s\n' "$GH_PAT" | sudo tee /etc/macbook-watch/dispatch.env >/dev/null
+unset GH_PAT
+sudo chmod 600 /etc/macbook-watch/dispatch.env
 sudo systemctl daemon-reload
 sudo systemctl enable --now macbook-watch-dispatch.timer
 sudo systemctl start macbook-watch-dispatch.service
