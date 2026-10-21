@@ -26,3 +26,18 @@ node --test tools/retail-monitor/lib.test.mjs
 Monitor logs: https://github.com/Web-Usov/dashboard/actions/workflows/avito-monitor.yml
 
 Live JSON: https://github.com/Web-Usov/dashboard/blob/gh-pages/data.json
+
+## Scheduling: ChatGPT owns the hourly trigger (from 21 October 2026)
+
+The primary trigger is an existing **ChatGPT scheduled automation**, not GitHub cron. Once an hour it reads the latest `gh-pages/data.json` and, if the monitoring period is active, updates the small `tools/retail-monitor/heartbeat.json` file in `main` via the **GitHub connector**, preserving the file's current blob SHA. The resulting GitHub `push` event triggers `.github/workflows/avito-monitor.yml`:
+
+1. `gate` reads the last store observation. GitHub `push` from ChatGPT initiates an actual collection within the monitoring window; `workflow_dispatch` is retained for manual/test use.
+2. `retail` fetches exact shop pages, appends a timestamped verified `checks` observation, and atomically updates `gh-pages/data.json`.
+3. `collect` optionally reads Avito through Apify when the `APIFY_TOKEN` GitHub Secret exists. Missing token does not block retail.
+4. `deploy` publishes the latest `gh-pages` version via GitHub Pages using `actions/deploy-pages`, even if the optional Avito collector fails.
+
+**Native GitHub `on.schedule` is disabled.** The old cron diagnostic workflow is now manual-only. GitHub Actions is used only as the job runner and Pages deployer, not as the scheduler. The scheduled ChatGPT task requires authorized GitHub access; if the connector stops working, `lastCheckAt` and the UI freshness warning will reveal missing observations. GitHub Actions `event=push` after a ChatGPT heartbeat is the expected evidence. This avoids depending on GitHub cron, which did not produce events during initial diagnostics.
+
+**No other service / credentials are required** for the ChatGPT trigger beyond the existing GitHub connection. The backup VPS dispatcher remains optional and uninstalled. The scheduled task expires after 1 November 2026; the collection script separately enforces the monitoring date range.
+
+Run history: https://github.com/Web-Usov/dashboard/actions/workflows/avito-monitor.yml
