@@ -8,7 +8,7 @@
 2. Open [Settings → API & Integrations](https://console.apify.com/account#/integrations). Create a dedicated API token with the minimum permitted scope that allows Actor runs, dataset reads **and the read-only account limits endpoint** (`GET /v2/users/me/limits`). Do not put the token in a URL, source file or browser JavaScript.
 3. Open [repository Actions Secrets](https://github.com/Web-Usov/dashboard/settings/secrets/actions), create **New repository secret** named exactly **`APIFY_TOKEN`**, paste token as the value.
 4. Open [Settings → Pages](https://github.com/Web-Usov/dashboard/settings/pages) and change **Build and deployment → Source** from **Deploy from a branch** to **GitHub Actions**. This is required: a commit made by a GitHub Actions `GITHUB_TOKEN` does *not* start a traditional branch-based Pages build.
-5. On [Actions](https://github.com/Web-Usov/dashboard/actions/workflows/avito-monitor.yml), choose **MacBook Pro - Avito + Pages → Run workflow** (branch `main`) to test. The workflow tests parsing, makes two capped Apify calls, merges new Avito listings into `gh-pages/data.json` with SHA conflict retries, then publishes the **full** `gh-pages` website using `actions/deploy-pages`.
+5. On [Actions](https://github.com/Web-Usov/dashboard/actions/workflows/avito-monitor.yml), choose **MacBook Pro - Avito + Pages → Run workflow** (branch `main`) to test. The workflow tests parsing, makes two capped Apify calls and merges new Avito listings into `gh-pages/data.json` with SHA conflict retries. An **independent `deploy` job** always publishes the latest `gh-pages` site using `actions/deploy-pages` even if the Apify job fails.
 6. Verify the **Pages deployment** is green, check [site](https://web-usov.github.io/dashboard/) → **Б/у · Avito**, and look at `sources.Avito` in [JSON](https://github.com/Web-Usov/dashboard/blob/gh-pages/data.json). Zero matching ads is acceptable if filters are strict, but an empty/error API result is not proof no ads exist.
 
 ## Schedule, costs, protections
@@ -41,3 +41,11 @@ No npm packages needed. The application integration uses built-in Node.js `fetch
 - [Apify REST](https://docs.apify.com/api/v2)
 - [GitHub Pages custom publishing workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [GitHub Actions secret management](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
+
+## Troubleshooting Pages publication
+
+- The `pages build and deployment` automatic workflow belongs to the old **Deploy from a branch** setting; to use the dedicated `MacBook Pro - Avito + Pages` workflow switch **Settings → Pages → Source: GitHub Actions**.
+- Workflow runs have two jobs: `Collect Avito listings` (may fail due to Apify access or budget) and `Publish latest gh-pages` (runs independently unless the entire workflow was cancelled).
+- If `Publish latest gh-pages` shows **Waiting**, inspect **Settings → Environments → github-pages** for Required reviewers, wait timer, and branch restrictions. Allow `main` as a deployment branch; remove unneeded human approval for hourly unattended operation.
+- `APIFY_TOKEN` goes into **repository** Actions Secrets, not browser code or the `github-pages` environment unless workflow is altered accordingly.
+- The workflow has a push trigger for changes to itself, so a merge of a workflow repair triggers a test deployment automatically (but still requires correct Pages source and environment permissions).
