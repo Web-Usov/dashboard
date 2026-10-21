@@ -44,9 +44,32 @@ jobs:
         if: env.APIFY_TOKEN == ''
         run: echo 'APIFY_TOKEN not set; skip Avito without blocking the Pages deployment.'
 
+  retail:
+    name: Verify retail prices
+    if: github.repository == 'Web-Usov/dashboard'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout retail integration
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test retail parser
+        run: node --test tools/retail-monitor/*.test.mjs
+      - name: Fetch product prices and append real hourly measurements
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node tools/retail-monitor/index.mjs
+
   deploy:
     name: Publish latest gh-pages
-    needs: collect
+    needs: [collect, retail]
     # Publishing must not depend on Avito (which can hit API limits or timeout).
     if: ${{ !cancelled() && github.repository == 'Web-Usov/dashboard' }}
     runs-on: ubuntu-latest
