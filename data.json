@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "market": "Самара, Россия",
   "timezone": "Europe/Samara",
-  "schedule": "26 окт — 1 ноя",
-  "startAt": "2026-10-25T20:00:00Z",
+  "schedule": "21 окт — 1 ноя",
+  "startAt": "2026-10-21T14:00:00Z",
   "endAt": "2026-11-01T19:00:00Z",
   "baselineAt": "2026-10-21T10:48:03Z",
-  "lastCheckAt": null,
-  "checkCount": 0,
+  "lastCheckAt": "2026-10-21T13:52:57.400Z",
+  "checkCount": 1,
   "lastSuccessAt": null,
   "listings": [
     {
@@ -23,11 +23,13 @@
       "paymentLabel": "Цена сайта; условия уточнить",
       "store": "Samara Apple",
       "location": "Аврора Молл, Самара",
-      "url": "https://samara-apple.ru/catalog/apple/apple-mac/macbook-pro/macbook-pro-14-2026/",
+      "url": "https://samara-apple.ru/catalog/apple/apple-mac/macbook-pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-space-black-chyernyy-kosmos/",
       "status": "preliminary",
       "firstSeenAt": "2026-10-21T10:48:03Z",
       "verifiedAt": null,
-      "notes": "Стартовая цена наличными, по каталогу; наличие не перепроверено."
+      "notes": "Каталог Samara Apple (поисковый индекс ~3 дня) указывает 220 990 ₽ наличными/254 140 ₽ картой, но сохранённая поиском отдельная карточка показывает 222 990/256 440 ₽. Цена противоречивая, уточнить. По каталогу заявлено «в наличии» и самовывоз.",
+      "stockStatus": "listed-in-stock",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
     },
     {
       "id": "S005",
@@ -46,7 +48,9 @@
       "status": "preliminary",
       "firstSeenAt": "2026-10-21T10:48:03Z",
       "verifiedAt": null,
-      "notes": "Стартовый каталог; цена может отличаться на карточке модели."
+      "notes": "Поисковая выдача каталога Hi Store 2 дня назад показывала 225 590 ₽ и «в наличии»; другие страницы показывают иные цены. Уточнить стоимость и наличие.",
+      "stockStatus": "listed-in-stock",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
     },
     {
       "id": "S006",
@@ -65,10 +69,109 @@
       "status": "preliminary",
       "firstSeenAt": "2026-10-21T10:48:03Z",
       "verifiedAt": null,
-      "notes": "Наличие подтвердит менеджер."
+      "notes": "Опубликованная цена 231 490 ₽; магазины в ТЦ Гудок / Космопорт. Менеджер подтверждает наличие после заказа; сайт не гарантирует складские остатки.",
+      "stockStatus": "pickup-confirm",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+    },
+    {
+      "id": "S007",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2025) · Silver (MDE64)",
+      "chip": "M5",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 213990,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Опубликованная цена; способ оплаты уточнить",
+      "store": "Hi Store",
+      "location": "Ново-Садовая, 106, Самара",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2025/apple-macbook-pro-14-m5-2025-24gb-1tb-ssd-silver-mde64/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T13:52:57.400Z",
+      "verifiedAt": null,
+      "notes": "В поисковой выдаче каталога (индексация около недели назад) 213 990 ₽ и «доставка со склада»; ранее сохранённая карточка показывала 209 490 ₽ и «в наличии». Есть расхождение между снимками; цену и реальный срок получения перепроверить у продавца.",
+      "stockStatus": "warehouse",
+      "sourceAccess": "indexed",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+    },
+    {
+      "id": "S008",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2026) · Space Black (MGDR4)",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 230890,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Опубликованная цена; способ оплаты уточнить",
+      "store": "Hi Store",
+      "location": "Ново-Садовая, 106, Самара",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/apple-m5-pro/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T13:52:57.400Z",
+      "verifiedAt": null,
+      "notes": "По индексированной выдаче каталога (около 4 дней назад) — в наличии, 230 890 ₽; другие страницы дают другую цену. Уточнить стоимость и наличие по конкретному SKU.",
+      "stockStatus": "listed-in-stock",
+      "sourceAccess": "indexed",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+    },
+    {
+      "id": "S009",
+      "type": "retail",
+      "title": "MacBook Pro 16″ (2026) · Space Black (MGEA4)",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 260890,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Опубликованная цена; способ оплаты уточнить",
+      "store": "Hi Store",
+      "location": "Ново-Садовая, 106, Самара",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-16-2026/apple-macbook-pro-16-m5-pro-18c-cpu-20c-gpu-2026-24-1tb-ssd-space-black/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T13:52:57.400Z",
+      "verifiedAt": null,
+      "notes": "Индексированная каталожная цена около 4 дней назад. Указано «доставка со склада» — не немедленный самовывоз в Самаре.",
+      "stockStatus": "warehouse",
+      "sourceAccess": "indexed",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
+    },
+    {
+      "id": "S010",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2026) · Space Black (MGDR4)",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 257000,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Опубликованная цена; способ оплаты уточнить",
+      "store": "iЧехол",
+      "location": "Ново-Вокзальная, 146а, Самара",
+      "url": "https://ichehol.ru/catalog/noutbuki-planshety-i-kompyutery/noutbuki/apple/macbook-pro/m5-pro/2026/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T13:52:57.400Z",
+      "verifiedAt": null,
+      "notes": "В каталоге 257 000 ₽, «на складе (от 1 дня)». Забрать в Самаре можно после поступления; подтвердить цену и дату.",
+      "stockStatus": "warehouse",
+      "sourceAccess": "indexed",
+      "sourceCheckedAt": "2026-10-21T13:52:57.400Z"
     }
   ],
-  "checks": [],
+  "checks": [
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "minProM5": null,
+      "minProM5Pro": null,
+      "count": 7,
+      "status": "partial",
+      "note": "Просмотрены индексированные страницы магазинов. Цены не подтверждены прямым онлайн-запросом на момент проверки; Avito недоступен. Рекордные цены в график не внесены."
+    }
+  ],
   "events": [
     {
       "at": "2026-10-21T10:48:03Z",
@@ -79,28 +182,67 @@
       "at": "2026-10-21T10:48:03Z",
       "kind": "filter",
       "text": "Изменены критерии: только MacBook Pro M5 и M5 Pro (оперативная память ≥24 ГБ, встроенный SSD ≥1 ТБ)."
+    },
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "kind": "new",
+      "id": "S007",
+      "text": "Найдено в публикации магазина: MacBook Pro 14″ (2025) · Silver (MDE64), 213 990 ₽, Hi Store. Цена и наличие требуют подтверждения."
+    },
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "kind": "new",
+      "id": "S008",
+      "text": "Найдено в публикации магазина: MacBook Pro 14″ (2026) · Space Black (MGDR4), 230 890 ₽, Hi Store. Цена и наличие требуют подтверждения."
+    },
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "kind": "new",
+      "id": "S009",
+      "text": "Найдено в публикации магазина: MacBook Pro 16″ (2026) · Space Black (MGEA4), 260 890 ₽, Hi Store. Цена и наличие требуют подтверждения."
+    },
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "kind": "new",
+      "id": "S010",
+      "text": "Найдено в публикации магазина: MacBook Pro 14″ (2026) · Space Black (MGDR4), 257 000 ₽, iЧехол. Цена и наличие требуют подтверждения."
+    },
+    {
+      "at": "2026-10-21T13:52:57.400Z",
+      "kind": "check",
+      "text": "Первый ручной обход после переноса начала на 21 октября: найдены дополнительные подходящие варианты в индексируемых каталогах; прямое получение актуальных страниц и Avito ограничено. Пока без подтверждения цен в реальном времени."
     }
   ],
   "sources": {
     "Avito": {
       "status": "limited",
-      "message": "Нет доступа к подтверждённым объявлениям"
+      "message": "Прямой запрос выдачи не открылся; поиск по индексированным объявлениям не дал проверяемых ссылок. Б/у аналитика пока недоступна.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
     },
     "Samara Apple": {
-      "status": "preliminary",
-      "message": "Предварительные цены, требуется проверка"
+      "status": "indexed",
+      "message": "Опубликованы цены 220 990 ₽ наличными в каталоге и 222 990 ₽ в сохранённой карточке; перепроверка у продавца нужна.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
     },
     "Hi Store": {
-      "status": "preliminary",
-      "message": "Предварительные цены, требуется проверка"
-    },
-    "iStudio": {
-      "status": "preliminary",
-      "message": "Предварительные цены, требуется проверка"
+      "status": "indexed",
+      "message": "Несколько подходящих Pro, но цены расходятся между каталогами/снимками. Наличие на складе отличается от немедленного самовывоза.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
     },
     "ре:зон": {
-      "status": "preliminary",
-      "message": "Предварительные цены, требуется проверка"
+      "status": "indexed",
+      "message": "Карточка Pro M5 Pro 24/1 ТБ показывает 231 490 ₽; магазин подтверждает фактическое наличие после заказа.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
+    },
+    "iЧехол": {
+      "status": "indexed",
+      "message": "Модель Pro M5 Pro 24/1 ТБ — 257 000 ₽ на складе от 1 дня, забрать в Самаре после подтверждения.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
+    },
+    "Мобилочка": {
+      "status": "unconfirmed",
+      "message": "Найдена старая индексированная карточка; подтверждения наличия в офлайн-магазине Самары нет, поэтому в подборку не включена.",
+      "checkedAt": "2026-10-21T13:52:57.400Z"
     }
   },
   "modelFilter": {
