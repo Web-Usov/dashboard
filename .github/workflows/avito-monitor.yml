@@ -8,6 +8,7 @@ on:
     paths:
       - '.github/workflows/avito-monitor.yml'
       - 'tools/avito-monitor/**'
+      - 'tools/retail-monitor/**'
 
 concurrency:
   group: macbook-pages
