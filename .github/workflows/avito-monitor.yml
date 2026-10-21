@@ -53,6 +53,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check Avito collector syntax
+        run: node --check tools/avito-monitor/index.mjs
       - name: Run parser and merge tests
         run: node --test tools/avito-monitor/*.test.mjs
       - name: Search Avito and update the JSON
