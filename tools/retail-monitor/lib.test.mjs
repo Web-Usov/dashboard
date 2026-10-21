@@ -7,6 +7,13 @@ test('Hi Store: selects the discounted price rather than old price or cashback',
  const html=wrap('Apple MacBook Pro 14.2" (M5 Pro, 2026) 24/1Tb SSD (MGDN4) Silver','В наличии Старая цена 282 090₽ Скидка 65 100₽ Цена со скидкой 216 990₽ Варианты цен');
  assert.equal(parseProduct(html,hi).price,216990);
 });
+test('Hi Store: MacBook Pro base M5 24GB / 1TB is accepted, but M5 Pro is not confused with base M5',()=>{
+ const product=PRODUCTS.find(x=>x.id==='S007');
+ const good=wrap('Apple MacBook Pro 14.2" (M5 10C CPU, 10C GPU, 2025) 24Gb 1Tb SSD (MDE64) Silver','Доставка со склада Старая цена 269 990₽ Цена со скидкой 189 990₽');
+ assert.equal(parseProduct(good,product).price,189990);
+ const wrong=wrap('Apple MacBook Pro 14.2" (M5 Pro, 2026) 24Gb 1Tb SSD (MDE64) Silver','Цена со скидкой 189 990₽');
+ assert.throws(()=>parseProduct(wrong,product));
+});
 test('re:zon: takes first displayed selling price before crossed old price',()=>{
  const html=wrap('Apple MacBook Pro 14″ M5 Pro · 24/1 ТБ · Серебристый','Гарантия 12 месяцев 231 490 ₽ 277 990 ₽ Выгода 46 500 ₽ В корзину');
  assert.equal(parseProduct(html,rezon).price,231490);
