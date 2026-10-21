@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "market": "Самара, Россия",
+  "timezone": "Europe/Samara",
+  "schedule": "26 окт — 1 ноя",
+  "startAt": "2026-10-25T20:00:00Z",
+  "endAt": "2026-11-01T19:00:00Z",
+  "baselineAt": "2026-10-21T10:48:03Z",
+  "lastCheckAt": null,
+  "checkCount": 0,
+  "lastSuccessAt": null,
+  "listings": [
+    {
+      "id": "S001",
+      "type": "retail",
+      "title": "MacBook Air 13″ (2026) · Starlight",
+      "chip": "M5",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 145990,
+      "cardPriceRub": 167890,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "Samara Apple",
+      "location": "Аврора Молл, Самара",
+      "url": "https://samara-apple.ru/catalog/apple/apple-mac/macbook-air/macbook-air-13-m5-2026/apple-macbook-air-13-m5-10c-cpu-10c-gpu-2026-24-1tb-ssd-starlight-siyayushchaya-zvezda/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Стартовая цена наличными; наличие не перепроверено."
+    },
+    {
+      "id": "S002",
+      "type": "retail",
+      "title": "MacBook Air 13″ (2026) · Starlight",
+      "chip": "M5",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 162890,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "Hi Store",
+      "location": "Ново-Садовая, 106, Самара",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_air/m5-24gb-1tb/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Условия оплаты и наличие уточнить."
+    },
+    {
+      "id": "S003",
+      "type": "retail",
+      "title": "MacBook Air 15″ (2026) · Silver",
+      "chip": "M5",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 194999,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "iStudio",
+      "location": "Космопорт, Самара",
+      "url": "https://istudio-samara.ru/catalog/macbook/macbook-air/macbook-air-2026/apple-macbook-air-15-2026-m5-10cpu-10gpu-24gb-1tb-silver-mdvc4.html",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Промо-цена из стартовой карточки; наличие не перепроверено."
+    },
+    {
+      "id": "S004",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2026) · Space Black",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 220990,
+      "cardPriceRub": 254140,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "Samara Apple",
+      "location": "Аврора Молл, Самара",
+      "url": "https://samara-apple.ru/catalog/apple/apple-mac/macbook-pro/macbook-pro-14-2026/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Стартовая цена наличными, по каталогу; наличие не перепроверено."
+    },
+    {
+      "id": "S005",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2026) · Silver",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 225590,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "Hi Store",
+      "location": "Ново-Садовая, 106, Самара",
+      "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/24gb/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Стартовый каталог; цена может отличаться на карточке модели."
+    },
+    {
+      "id": "S006",
+      "type": "retail",
+      "title": "MacBook Pro 14″ (2026) · Silver",
+      "chip": "M5 Pro",
+      "ramGb": 24,
+      "ssdGb": 1024,
+      "priceRub": 231490,
+      "cardPriceRub": null,
+      "condition": "Новый",
+      "paymentLabel": "Цена сайта; условия уточнить",
+      "store": "ре:зон",
+      "location": "Гудок / Космопорт, Самара",
+      "url": "https://rezon.store/catalog/mac/macbook-pro-14-m5-pro/apple-macbook-pro-14-inch-m5-pro-24-1tb-silver/",
+      "status": "preliminary",
+      "firstSeenAt": "2026-10-21T10:48:03Z",
+      "verifiedAt": null,
+      "notes": "Наличие подтвердит менеджер."
+    }
+  ],
+  "checks": [],
+  "events": [
+    {
+      "at": "2026-10-21T10:48:03Z",
+      "kind": "baseline",
+      "text": "Создан стартовый список из шести предварительных предложений. Цены пока не подтверждены текущим обходом сайтов."
+    }
+  ],
+  "sources": {
+    "Avito": {
+      "status": "limited",
+      "message": "Нет доступа к подтверждённым объявлениям"
+    },
+    "Samara Apple": {
+      "status": "preliminary",
+      "message": "Предварительные цены, требуется проверка"
+    },
+    "Hi Store": {
+      "status": "preliminary",
+      "message": "Предварительные цены, требуется проверка"
+    },
+    "iStudio": {
+      "status": "preliminary",
+      "message": "Предварительные цены, требуется проверка"
+    },
+    "ре:зон": {
+      "status": "preliminary",
+      "message": "Предварительные цены, требуется проверка"
+    }
+  }
+}
