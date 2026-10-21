@@ -43,7 +43,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const date=s=>s?new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Samara',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(s)):'нет данных';
 const safeUrl=s=>{try{const u=new URL(s);return u.protocol==='https:'?u.href:'#'}catch{return '#'}};
 let data=null, filter='all'; const min=(arr)=>arr.length?Math.min(...arr.map(x=>x.priceRub)):null;
-const eligible=x=>x&&typeof x.title==='string'&&/\\bPro\\b/i.test(x.title)&&!/\\bAir\\b/i.test(x.title)&&(x.chip==='M5'||x.chip==='M5 Pro')&&Number(x.ramGb)>=24&&Number(x.ssdGb)>=1024;
+const eligible=x=>x&&typeof x.title==='string'&&/\bPro\b/i.test(x.title)&&!/\bAir\b/i.test(x.title)&&(x.chip==='M5'||x.chip==='M5 Pro')&&Number(x.ramGb)>=24&&Number(x.ssdGb)>=1024;
 function totals(){const xs=(data.listings||[]).filter(x=>eligible(x)&&x.status!=='gone'&&Number.isFinite(x.priceRub)),basic=xs.filter(x=>x.chip==='M5'),pro=xs.filter(x=>x.chip==='M5 Pro'),used=xs.filter(x=>x.type==='used');
 const card=(label,v,h,primary=false)=>'<div class="stat'+(primary?' primary':'')+'"><div class="k">'+label+'</div><div class="v">'+money(v)+'</div><div class="hint">'+h+'</div></div>';
 $('#stats').innerHTML=card('MacBook Pro · M5',min(basic),'24+ ГБ / 1+ ТБ · минимальная цена',true)+card('MacBook Pro · M5 Pro',min(pro),'24+ ГБ / 1+ ТБ · минимальная цена')+card('Б/у MacBook Pro',min(used),'Минимальная цена на Avito')+'<div class="stat"><div class="k">MacBook Pro найдено</div><div class="v">'+xs.length+'</div><div class="hint">'+(data.checkCount||0)+' почасовых проверок · '+(data.schedule||'26.10–01.11')+'</div></div>';
