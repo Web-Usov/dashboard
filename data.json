@@ -6,9 +6,9 @@
   "startAt": "2026-10-21T14:00:00Z",
   "endAt": "2026-11-01T19:00:00Z",
   "baselineAt": "2026-10-21T10:48:03Z",
-  "lastCheckAt": "2026-10-21T17:44:47.681Z",
-  "checkCount": 12,
-  "lastSuccessAt": "2026-10-21T17:44:47.681Z",
+  "lastCheckAt": "2026-10-21T19:45:06.893Z",
+  "checkCount": 13,
+  "lastSuccessAt": "2026-10-21T19:45:06.893Z",
   "listings": [
     {
       "id": "S004",
@@ -47,11 +47,11 @@
       "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-silver/",
       "status": "active",
       "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": "2026-10-21T17:44:47.681Z",
+      "verifiedAt": "2026-10-21T19:45:06.893Z",
       "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "listed-in-stock",
       "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
-      "lastSeenAt": "2026-10-21T17:44:47.681Z"
+      "lastSeenAt": "2026-10-21T19:45:06.893Z"
     },
     {
       "id": "S006",
@@ -69,11 +69,11 @@
       "url": "https://rezon.store/catalog/mac/macbook-pro-14-m5-pro/apple-macbook-pro-14-inch-m5-pro-24-1tb-silver/",
       "status": "active",
       "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": "2026-10-21T17:44:47.681Z",
+      "verifiedAt": "2026-10-21T19:45:06.893Z",
       "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "pickup-confirm",
       "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
-      "lastSeenAt": "2026-10-21T17:44:47.681Z"
+      "lastSeenAt": "2026-10-21T19:45:06.893Z"
     },
     {
       "id": "S007",
@@ -91,12 +91,12 @@
       "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2025/apple-macbook-pro-14-m5-2025-24gb-1tb-ssd-silver-mde64/",
       "status": "active",
       "firstSeenAt": "2026-10-21T13:52:57.400Z",
-      "verifiedAt": "2026-10-21T17:44:47.681Z",
+      "verifiedAt": "2026-10-21T19:45:06.893Z",
       "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "warehouse",
       "sourceAccess": "indexed",
       "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
-      "lastSeenAt": "2026-10-21T17:44:47.681Z"
+      "lastSeenAt": "2026-10-21T19:45:06.893Z"
     },
     {
       "id": "S008",
@@ -114,12 +114,12 @@
       "url": "https://hi-stores.ru/catalog/macbook/macbook_pro/macbook-pro-14-2026/apple-macbook-pro-14-m5-pro-15c-cpu-16c-gpu-2026-24-1tb-ssd-space-black/",
       "status": "active",
       "firstSeenAt": "2026-10-21T13:52:57.400Z",
-      "verifiedAt": "2026-10-21T17:44:47.681Z",
+      "verifiedAt": "2026-10-21T19:45:06.893Z",
       "notes": "Цена считана напрямую с карточки товара; наличие для самовывоза уточнить у продавца.",
       "stockStatus": "listed-in-stock",
       "sourceAccess": "indexed",
       "sourceCheckedAt": "2026-10-21T13:52:57.400Z",
-      "lastSeenAt": "2026-10-21T17:44:47.681Z"
+      "lastSeenAt": "2026-10-21T19:45:06.893Z"
     },
     {
       "id": "S009",
@@ -262,6 +262,14 @@
       "count": 4,
       "status": "ok",
       "note": "Автоматический HTTP-обход карточек продавцов; 4 цен подтверждено, 0 ошибок."
+    },
+    {
+      "at": "2026-10-21T19:45:06.893Z",
+      "minProM5": 205690,
+      "minProM5Pro": 223490,
+      "count": 4,
+      "status": "ok",
+      "note": "Автоматический HTTP-обход карточек продавцов; 4 цен подтверждено, 0 ошибок."
     }
   ],
   "events": [
@@ -318,13 +326,13 @@
     },
     "Hi Store": {
       "status": "ok",
-      "checkedAt": "2026-10-21T17:44:47.681Z",
-      "message": "Последняя проверка карточки: 21:44; цена опубликована на сайте"
+      "checkedAt": "2026-10-21T19:45:06.893Z",
+      "message": "Последняя проверка карточки: 23:45; цена опубликована на сайте"
     },
     "ре:зон": {
       "status": "ok",
-      "checkedAt": "2026-10-21T17:44:47.681Z",
-      "message": "Последняя проверка карточки: 21:44; цена опубликована на сайте"
+      "checkedAt": "2026-10-21T19:45:06.893Z",
+      "message": "Последняя проверка карточки: 23:45; цена опубликована на сайте"
     },
     "iЧехол": {
       "status": "indexed",
@@ -352,8 +360,8 @@
   },
   "sourcePolicy": "Проверять только MacBook Pro. MacBook Air не добавлять ни при каких условиях.",
   "retailAutomated": {
-    "lastAttemptAt": "2026-10-21T17:44:47.681Z",
-    "lastSuccessAt": "2026-10-21T17:44:47.681Z",
+    "lastAttemptAt": "2026-10-21T19:45:06.893Z",
+    "lastSuccessAt": "2026-10-21T19:45:06.893Z",
     "ok": 4,
     "failed": 0
   }
