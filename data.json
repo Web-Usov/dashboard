@@ -11,63 +11,6 @@
   "lastSuccessAt": null,
   "listings": [
     {
-      "id": "S001",
-      "type": "retail",
-      "title": "MacBook Air 13″ (2026) · Starlight",
-      "chip": "M5",
-      "ramGb": 24,
-      "ssdGb": 1024,
-      "priceRub": 145990,
-      "cardPriceRub": 167890,
-      "condition": "Новый",
-      "paymentLabel": "Цена сайта; условия уточнить",
-      "store": "Samara Apple",
-      "location": "Аврора Молл, Самара",
-      "url": "https://samara-apple.ru/catalog/apple/apple-mac/macbook-air/macbook-air-13-m5-2026/apple-macbook-air-13-m5-10c-cpu-10c-gpu-2026-24-1tb-ssd-starlight-siyayushchaya-zvezda/",
-      "status": "preliminary",
-      "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": null,
-      "notes": "Стартовая цена наличными; наличие не перепроверено."
-    },
-    {
-      "id": "S002",
-      "type": "retail",
-      "title": "MacBook Air 13″ (2026) · Starlight",
-      "chip": "M5",
-      "ramGb": 24,
-      "ssdGb": 1024,
-      "priceRub": 162890,
-      "cardPriceRub": null,
-      "condition": "Новый",
-      "paymentLabel": "Цена сайта; условия уточнить",
-      "store": "Hi Store",
-      "location": "Ново-Садовая, 106, Самара",
-      "url": "https://hi-stores.ru/catalog/macbook/macbook_air/m5-24gb-1tb/",
-      "status": "preliminary",
-      "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": null,
-      "notes": "Условия оплаты и наличие уточнить."
-    },
-    {
-      "id": "S003",
-      "type": "retail",
-      "title": "MacBook Air 15″ (2026) · Silver",
-      "chip": "M5",
-      "ramGb": 24,
-      "ssdGb": 1024,
-      "priceRub": 194999,
-      "cardPriceRub": null,
-      "condition": "Новый",
-      "paymentLabel": "Цена сайта; условия уточнить",
-      "store": "iStudio",
-      "location": "Космопорт, Самара",
-      "url": "https://istudio-samara.ru/catalog/macbook/macbook-air/macbook-air-2026/apple-macbook-air-15-2026-m5-10cpu-10gpu-24gb-1tb-silver-mdvc4.html",
-      "status": "preliminary",
-      "firstSeenAt": "2026-10-21T10:48:03Z",
-      "verifiedAt": null,
-      "notes": "Промо-цена из стартовой карточки; наличие не перепроверено."
-    },
-    {
       "id": "S004",
       "type": "retail",
       "title": "MacBook Pro 14″ (2026) · Space Black",
@@ -130,7 +73,12 @@
     {
       "at": "2026-10-21T10:48:03Z",
       "kind": "baseline",
-      "text": "Создан стартовый список из шести предварительных предложений. Цены пока не подтверждены текущим обходом сайтов."
+      "text": "Подборка ограничена MacBook Pro M5 / M5 Pro; три стартовых предложения имеют предварительные цены."
+    },
+    {
+      "at": "2026-10-21T10:48:03Z",
+      "kind": "filter",
+      "text": "Фильтр обновлён: только MacBook Pro M5 и M5 Pro с 24+ ГБ RAM и 1+ ТБ SSD; MacBook Air исключены."
     }
   ],
   "sources": {
@@ -154,5 +102,19 @@
       "status": "preliminary",
       "message": "Предварительные цены, требуется проверка"
     }
-  }
+  },
+  "modelFilter": {
+    "family": "MacBook Pro",
+    "chips": [
+      "M5",
+      "M5 Pro"
+    ],
+    "minRamGb": 24,
+    "minSsdGb": 1024,
+    "exclude": [
+      "MacBook Air",
+      "M5 Max"
+    ]
+  },
+  "sourcePolicy": "Проверять только MacBook Pro. MacBook Air не добавлять ни при каких условиях."
 }
