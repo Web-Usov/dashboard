@@ -1,5 +1,5 @@
 {
   "purpose": "Wake MacBook retail workflow through a GitHub push when native cron is late",
-  "lastFallbackAt": null,
-  "updatedBy": "ChatGPT hourly task (fallback only)"
+  "lastFallbackAt": "2026-10-21T17:13:11.149Z",
+  "updatedBy": "ChatGPT scheduled hourly trigger (manual E2E test)"
 }
