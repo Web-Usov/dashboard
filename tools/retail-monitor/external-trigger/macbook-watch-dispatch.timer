@@ -1,0 +1,11 @@
+[Unit]
+Description=Trigger MacBook Pro monitoring independently of GitHub schedule
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=15s
+Unit=macbook-watch-dispatch.service
+
+[Install]
+WantedBy=timers.target
