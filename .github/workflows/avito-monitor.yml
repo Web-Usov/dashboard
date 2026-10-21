@@ -2,7 +2,7 @@ name: MacBook Pro - Avito + Pages
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 * * * *'
+    - cron: '7,17,27,37,47,57 * * * *'
   push:
     branches: [main]
     paths:
@@ -15,9 +15,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    name: Hourly freshness gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      should_run: ${{ steps.gate.outputs.should_run }}
+    steps:
+      - name: Checkout monitor
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check snapshot age and schedule
+        id: gate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node tools/retail-monitor/gate.mjs
+
   collect:
     name: Collect Avito listings
-    if: github.repository == 'Web-Usov/dashboard'
+    needs: gate
+    if: ${{ needs.gate.outputs.should_run == 'true' && github.repository == 'Web-Usov/dashboard' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
@@ -47,7 +69,8 @@ jobs:
 
   retail:
     name: Verify retail prices
-    if: github.repository == 'Web-Usov/dashboard'
+    needs: gate
+    if: ${{ needs.gate.outputs.should_run == 'true' && github.repository == 'Web-Usov/dashboard' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -74,9 +97,9 @@ jobs:
 
   deploy:
     name: Publish latest gh-pages
-    needs: [collect, retail]
+    needs: [gate, collect, retail]
     # Publishing must not depend on Avito (which can hit API limits or timeout).
-    if: ${{ !cancelled() && github.repository == 'Web-Usov/dashboard' }}
+    if: ${{ !cancelled() && needs.gate.outputs.should_run == 'true' && github.repository == 'Web-Usov/dashboard' }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
